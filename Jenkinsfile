@@ -18,7 +18,7 @@ pipeline {
         stage('Test Application') {
             steps {
                 bat 'docker run -d --name jenkins-test-container -p 5001:5000 full-cicd-jenkins-docker-aws'
-                bat 'timeout /t 5'
+                
                 bat 'curl http://localhost:5001/health'
             }
         }
