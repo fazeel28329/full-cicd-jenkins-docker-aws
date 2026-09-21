@@ -1,7 +1,6 @@
 pipeline {
 agent any
 
-```
 stages {
 
     stage('Checkout') {
@@ -52,18 +51,13 @@ stages {
                 keyFileVariable: 'SSH_KEY',
                 usernameVariable: 'SSH_USER'
             )]) {
-
                 bat 'ssh -o StrictHostKeyChecking=no -i "%SSH_KEY%" %SSH_USER%@100.54.203.249 "sudo docker pull fazeelmuhammad283/full-cicd-jenkins-docker-aws:latest"'
-
                 bat 'ssh -o StrictHostKeyChecking=no -i "%SSH_KEY%" %SSH_USER%@100.54.203.249 "sudo docker stop project4-container || true"'
-
                 bat 'ssh -o StrictHostKeyChecking=no -i "%SSH_KEY%" %SSH_USER%@100.54.203.249 "sudo docker rm project4-container || true"'
-
                 bat 'ssh -o StrictHostKeyChecking=no -i "%SSH_KEY%" %SSH_USER%@100.54.203.249 "sudo docker run -d --name project4-container -p 5000:5000 fazeelmuhammad283/full-cicd-jenkins-docker-aws:latest"'
             }
         }
     }
 }
-```
 
 }
